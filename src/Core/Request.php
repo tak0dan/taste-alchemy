@@ -39,6 +39,21 @@ final class Request
             $headers['content-type'] = $_SERVER['CONTENT_TYPE'];
         }
 
+        // Algunos SAPI (Apache) no exponen Authorization como HTTP_AUTHORIZATION.
+        // Fallbacks: variable redirigida y getallheaders()/apache_request_headers().
+        if (!isset($headers['authorization'])) {
+            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+                $headers['authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+            } elseif (function_exists('getallheaders')) {
+                foreach (getallheaders() ?: [] as $name => $value) {
+                    if (strcasecmp((string) $name, 'Authorization') === 0) {
+                        $headers['authorization'] = $value;
+                        break;
+                    }
+                }
+            }
+        }
+
         $body = $_POST;
         $contentType = strtolower($headers['content-type'] ?? '');
         if (str_contains($contentType, 'application/json')) {
