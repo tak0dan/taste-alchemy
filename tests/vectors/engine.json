@@ -1,0 +1,205 @@
+{
+    "engine": [
+        {
+            "name": "cereza_hybrid_golden",
+            "input": {
+                "base": "cereza",
+                "mode": "ingredientes",
+                "base_abv_pct": 40,
+                "vodka_ml": 1000,
+                "ingredient_g": 1000,
+                "desired_volume_ml": 2000,
+                "extraction": "hybrid",
+                "sugar_ratio": 0.4,
+                "water_ratio": 0.5
+            },
+            "expect": {
+                "abv_pct": 22.169,
+                "alcohol_ml": 368,
+                "final_ml": 1660,
+                "net_vodka_ml": 920,
+                "juice_ml": 180,
+                "sugar_volume_ml": 60,
+                "water_ml": 500,
+                "sugar_g": 400,
+                "sugar_gl": 240.96,
+                "brix": 22.14,
+                "freezing_point_c": -13.42
+            }
+        },
+        {
+            "name": "cereza_limoncello",
+            "input": {
+                "base": "cereza",
+                "mode": "ingredientes",
+                "base_abv_pct": 40,
+                "vodka_ml": 1000,
+                "ingredient_g": 1000,
+                "extraction": "limoncello",
+                "sugar_ratio": 0.4,
+                "water_ratio": 0.5
+            },
+            "expect": {
+                "abv_pct": 22.989,
+                "alcohol_ml": 400,
+                "final_ml": 1740,
+                "net_vodka_ml": 1000,
+                "juice_ml": 180,
+                "sugar_volume_ml": 60,
+                "water_ml": 500,
+                "sugar_g": 400,
+                "sugar_gl": 229.89,
+                "brix": 21.19,
+                "freezing_point_c": -13.78
+            }
+        },
+        {
+            "name": "cereza_hot",
+            "input": {
+                "base": "cereza",
+                "mode": "ingredientes",
+                "base_abv_pct": 40,
+                "vodka_ml": 1000,
+                "ingredient_g": 1000,
+                "extraction": "hot",
+                "sugar_ratio": 0.4,
+                "water_ratio": 0.5
+            },
+            "expect": {
+                "abv_pct": 21.384,
+                "alcohol_ml": 340,
+                "final_ml": 1590,
+                "net_vodka_ml": 850,
+                "juice_ml": 180,
+                "sugar_volume_ml": 60,
+                "water_ml": 500,
+                "sugar_g": 400,
+                "sugar_gl": 251.57,
+                "brix": 23.03,
+                "freezing_point_c": -13.07
+            }
+        },
+        {
+            "name": "hibisco_limoncello",
+            "input": {
+                "base": "hibisco",
+                "mode": "ingredientes",
+                "base_abv_pct": 40,
+                "vodka_ml": 700,
+                "ingredient_g": 60,
+                "extraction": "limoncello",
+                "sugar_ratio": 0.38,
+                "water_ratio": 0.5
+            },
+            "expect": {
+                "abv_pct": 37.623,
+                "alcohol_ml": 280,
+                "final_ml": 744.22,
+                "net_vodka_ml": 700,
+                "juice_ml": 10.8,
+                "sugar_volume_ml": 3.42,
+                "water_ml": 30,
+                "sugar_g": 22.8,
+                "sugar_gl": 30.64,
+                "brix": 3.03,
+                "freezing_point_c": -20.95
+            }
+        },
+        {
+            "name": "cereza_blend",
+            "input": {
+                "base": "cereza",
+                "mode": "ingredientes",
+                "base_abv_pct": 40,
+                "vodka_ml": 1000,
+                "ingredient_g": 1000,
+                "extraction": "hybrid",
+                "sugar_ratio": 0.4,
+                "water_ratio": 0.5,
+                "blend_enabled": true,
+                "blend_pct": 15
+            },
+            "expect": {
+                "abv_pct": 22.169,
+                "alcohol_ml": 368,
+                "final_ml": 1660,
+                "net_vodka_ml": 920,
+                "juice_ml": 180,
+                "sugar_volume_ml": 60,
+                "water_ml": 500,
+                "sugar_g": 400,
+                "sugar_gl": 240.96,
+                "brix": 22.14,
+                "freezing_point_c": -13.42
+            }
+        },
+        {
+            "name": "volumen_equivalence",
+            "input": {
+                "base": "cereza",
+                "mode": "volumen",
+                "base_abv_pct": 40,
+                "desired_volume_ml": 1660,
+                "extraction": "hybrid",
+                "sugar_ratio": 0.4,
+                "water_ratio": 0.5
+            },
+            "expect": {
+                "abv_pct": 22.169,
+                "alcohol_ml": 368,
+                "final_ml": 1660,
+                "net_vodka_ml": 920,
+                "juice_ml": 180,
+                "sugar_volume_ml": 60,
+                "water_ml": 500,
+                "sugar_g": 400,
+                "sugar_gl": 240.96,
+                "brix": 22.14,
+                "freezing_point_c": -13.42
+            }
+        }
+    ],
+    "scalars": {
+        "sugar": [
+            {
+                "brix": 20,
+                "sg": 1.08,
+                "gl": 216
+            },
+            {
+                "brix": 0,
+                "sg": 1,
+                "gl": 0
+            }
+        ],
+        "slushy": [
+            {
+                "abv": 40,
+                "brix": 0,
+                "fp": -22.240000000000002
+            },
+            {
+                "abv": 20,
+                "brix": 0,
+                "fp": -9.76
+            },
+            {
+                "abv": 22.17,
+                "brix": 24,
+                "fp": -13.622530260000001
+            }
+        ],
+        "dilution": {
+            "pearson_40_0_30": {
+                "part_a": 0.75,
+                "part_b": 0.25
+            },
+            "dilute_1000_40_to_20": {
+                "water_ml": 1000,
+                "final_volume_ml": 2000,
+                "target_abv": 20,
+                "feasible": true
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "tak0dan/taste-alchemy",
+  "description": "El taller y el mercado de los licores de élite — Proyecto Intermodular 2º DAW",
+  "type": "project",
+  "license": "MIT",
+  "require": {
+    "php": ">=8.1",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
+    "ext-mbstring": "*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    },
+    "files": [
+      "src/Support/helpers.php"
+    ]
+  },
+  "scripts": {
+    "test": "php tests/run.php",
+    "serve": "php -S 127.0.0.1:8080 -t public public/index.php"
+  }
+}

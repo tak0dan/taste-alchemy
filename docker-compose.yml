@@ -1,0 +1,48 @@
+# Taste Alchemy · MariaDB 10.6 + aplicación PHP 8.1 / Apache
+#
+#   docker compose up --build
+#
+# La aplicación espera a la base de datos, instala el esquema verificado
+# (26 tablas · 5 vistas · 7 disparadores · 6 procedimientos) y carga la demo.
+
+services:
+  db:
+    image: mariadb:10.6
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: root_dev
+      MARIADB_DATABASE: taste_alchemy
+      MARIADB_USER: alchemy
+      MARIADB_PASSWORD: alchemy_dev
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_DATABASE: taste_alchemy
+      DB_USERNAME: alchemy
+      DB_PASSWORD: alchemy_dev
+      APP_URL: http://127.0.0.1:8080
+      APP_ENV: production
+      APP_DEBUG: "false"
+    ports:
+      - "8080:80"
+
+volumes:
+  db_data:

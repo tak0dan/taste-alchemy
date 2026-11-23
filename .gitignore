@@ -1,0 +1,8 @@
+.env
+var/
+vendor/
+node_modules/
+*.log
+.DS_Store
+tests/tmp/
+java/out/
